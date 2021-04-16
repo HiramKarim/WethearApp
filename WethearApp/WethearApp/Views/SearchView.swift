@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @ObservedObject var locationServices : locationService
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationView {
+            VStack {
+                SearchBar(locationServices: locationServices)
+                
+                List(locationServices.searchResults, id: \.key) { result in
+                    
+                    Text(result.localizedName)
+                }
+            }
+            .navigationBarTitle(Text("Search Location"))
+        }
+        
     }
 }
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(locationServices: locationService())
     }
 }

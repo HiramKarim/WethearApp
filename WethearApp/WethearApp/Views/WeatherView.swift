@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeatherView: View {
     
+    @ObservedObject var locationServices = locationService()
     @State private var showSearchView = false
     
     var body: some View {
@@ -23,10 +24,10 @@ struct WeatherView: View {
                                     }, label: {
                                         Image(systemName: "magnifyingglass")
                                             .resizable()
-                                            .frame(width: 13, height: 13)
+                                            .frame(width: 20, height: 20)
                                     }))
             .sheet(isPresented: $showSearchView, content: {
-                
+                SearchView(locationServices: locationServices)
             })
         }
         
