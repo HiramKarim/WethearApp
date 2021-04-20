@@ -11,6 +11,16 @@ class locationService: ObservableObject {
     
     @Published var searchResults = [LocationModel]()
     
+    @Published var selectedlocation: LocationModel? {
+        didSet {
+            if let _ = selectedlocation {
+                getCurrentCondition()
+            }
+        }
+    }
+    
+    @Published var currentWeather: CurrentWeatherModel?
+    
     var searchQuery = "" {
         didSet {
             searchLocation()
@@ -51,6 +61,40 @@ class locationService: ObservableObject {
                 print("error parsing location model: \(error.localizedDescription)")
             }
         }.resume()
+    }
+    
+    func getCurrentCondition() {
+        
+        guard let location = selectedlocation,
+              let url = URL(string: "http://dataservice.accuweather.com/currentconditions/v1/\(location.key)?apikey=\(Config.AccuWeather.apiKey)")
+        else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) {
+            [weak self] (data, response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let response = try JSONDecoder().decode([CurrentWeatherModel].self, from: data).first
+                
+                DispatchQueue.main.async {
+                    self?.currentWeather = response
+                }
+            }
+            catch let error {
+                print("error parsing Current Weather model: \(error.localizedDescription)")
+            }
+        }.resume()
+        
     }
     
 }

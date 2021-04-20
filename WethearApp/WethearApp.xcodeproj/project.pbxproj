@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FB20ECC262DF0270050CAAC /* CityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB20ECB262DF0270050CAAC /* CityCellView.swift */; };
+		1FB20ED9262E18FC0050CAAC /* CurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB20ED8262E18FC0050CAAC /* CurrentWeatherModel.swift */; };
+		1FB20EDE262E26C30050CAAC /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB20EDD262E26C30050CAAC /* CurrentWeatherView.swift */; };
+		1FB20EE4262E28700050CAAC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB20EE3262E28700050CAAC /* Helper.swift */; };
 		1FE14575262A2D4E00F95274 /* WethearAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE14574262A2D4E00F95274 /* WethearAppApp.swift */; };
 		1FE14577262A2D4E00F95274 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE14576262A2D4E00F95274 /* ContentView.swift */; };
 		1FE14579262A2D4E00F95274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE14578262A2D4E00F95274 /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FB20ECB262DF0270050CAAC /* CityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCellView.swift; sourceTree = "<group>"; };
+		1FB20ED8262E18FC0050CAAC /* CurrentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherModel.swift; sourceTree = "<group>"; };
+		1FB20EDD262E26C30050CAAC /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
+		1FB20EE3262E28700050CAAC /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1FE14571262A2D4E00F95274 /* WethearApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WethearApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE14574262A2D4E00F95274 /* WethearAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WethearAppApp.swift; sourceTree = "<group>"; };
 		1FE14576262A2D4E00F95274 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FB20EE2262E285E0050CAAC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1FB20EE3262E28700050CAAC /* Helper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1FE14568262A2D4E00F95274 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +123,7 @@
 		1FE14573262A2D4E00F95274 /* WethearApp */ = {
 			isa = PBXGroup;
 			children = (
+				1FB20EE2262E285E0050CAAC /* Utils */,
 				1FE145AA262A354200F95274 /* Services */,
 				1FE145A9262A353600F95274 /* ViewModels */,
 				1FE145A8262A352900F95274 /* Views */,
@@ -151,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE145B0262A361400F95274 /* LocationModel.swift */,
+				1FB20ED8262E18FC0050CAAC /* CurrentWeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,6 +179,8 @@
 				1FE145AB262A35A100F95274 /* WeatherView.swift */,
 				1FE145B5262A3A2200F95274 /* SearchView.swift */,
 				1FE145BA262A3F4300F95274 /* SearchBar.swift */,
+				1FB20ECB262DF0270050CAAC /* CityCellView.swift */,
+				1FB20EDD262E26C30050CAAC /* CurrentWeatherView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,12 +331,16 @@
 			files = (
 				1FE145BB262A3F4300F95274 /* SearchBar.swift in Sources */,
 				1FE14577262A2D4E00F95274 /* ContentView.swift in Sources */,
+				1FB20ED9262E18FC0050CAAC /* CurrentWeatherModel.swift in Sources */,
 				1FE145C0262A3F5600F95274 /* LocationService.swift in Sources */,
 				1FE14575262A2D4E00F95274 /* WethearAppApp.swift in Sources */,
+				1FB20EDE262E26C30050CAAC /* CurrentWeatherView.swift in Sources */,
 				1FE145A3262A34C200F95274 /* Config.swift in Sources */,
+				1FB20ECC262DF0270050CAAC /* CityCellView.swift in Sources */,
 				1FE145B1262A361400F95274 /* LocationModel.swift in Sources */,
 				1FE145B6262A3A2200F95274 /* SearchView.swift in Sources */,
 				1FE145AC262A35A100F95274 /* WeatherView.swift in Sources */,
+				1FB20EE4262E28700050CAAC /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

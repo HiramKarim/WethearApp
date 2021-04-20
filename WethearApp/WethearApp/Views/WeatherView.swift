@@ -14,21 +14,39 @@ struct WeatherView: View {
     
     var body: some View {
         
-        NavigationView {
-            VStack {
+        GeometryReader { geo in
+            
+            NavigationView {
+                
+                ZStack(alignment: .center) {
+                    
+                    Image((locationServices.currentWeather?.isDayTime ?? true) ? "bgDay" : "bgNight")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack {
+                        if let location = locationServices.selectedlocation,
+                           let weather = locationServices.currentWeather {
+                            CurrentWeatherView(city: location.localizedName, currentWeather: weather)
+                        }
+                    }
+                    .navigationBarItems(trailing:
+                                            Button(action: {
+                                                showSearchView.toggle()
+                                            }, label: {
+                                                Image(systemName: "magnifyingglass")
+                                                    .resizable()
+                                                    .frame(width: 30, height: 30)
+                                            }))
+                    .sheet(isPresented: $showSearchView, content: {
+                        SearchView(locationServices: locationServices)
+                    })
+                    
+                }
                 
             }
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        showSearchView.toggle()
-                                    }, label: {
-                                        Image(systemName: "magnifyingglass")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                    }))
-            .sheet(isPresented: $showSearchView, content: {
-                SearchView(locationServices: locationServices)
-            })
+            
         }
         
     }

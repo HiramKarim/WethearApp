@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var locationServices : locationService
     
     var body: some View {
@@ -19,7 +21,11 @@ struct SearchView: View {
                 
                 List(locationServices.searchResults, id: \.key) { result in
                     
-                    Text(result.localizedName)
+                    CityCellView(locationResult: result, selectedLocation: $locationServices.selectedlocation)
+                    
+                }
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .navigationBarTitle(Text("Search Location"))
